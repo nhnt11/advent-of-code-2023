@@ -25,11 +25,14 @@ const fs = require('fs').promises;
   // without this it takes ~60ms and with it it takes ~2.5ms on my M1 macbook lol
   const cache = {};
   function getAddedCardsForCard(cardId) {
+    if (cardId >= cardMatches.length) {
+      return 0;
+    }
     if (cache[cardId]) {
       return cache[cardId];
     }
     let addedCards = 1; // the card itself
-    for (let i = 1; i <= cardMatches[cardId] && cardId + i < cardMatches.length; i++) {
+    for (let i = 1; i <= cardMatches[cardId]; i++) {
       addedCards += getAddedCardsForCard(cardId + i);
     }
     cache[cardId] = addedCards;
