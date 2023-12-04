@@ -28,16 +28,16 @@ const fs = require('fs').promises;
     if (cache[cardId]) {
       return cache[cardId];
     }
-    let addedCards = 0;
+    let addedCards = 1; // the card itself
     for (let i = 1; i <= cardMatches[cardId] && cardId + i < cardMatches.length; i++) {
-      addedCards += 1 + getAddedCardsForCard(cardId + i);
+      addedCards += getAddedCardsForCard(cardId + i);
     }
     cache[cardId] = addedCards;
     return addedCards;
   }
   let sum = 0;
   for (i = 0; i < cardMatches.length; i++) {
-    sum += 1 + getAddedCardsForCard(i);
+    sum += getAddedCardsForCard(i);
   }
   console.log(sum)
   // console.timeEnd('foo');
