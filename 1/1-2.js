@@ -45,7 +45,7 @@ function replaceDigitWordsReversed(inputString) {
   for (let line of lines) {
     const first = replaceDigitWords(line).match(/[^\d]*(\d).*/)[1];
     const last = replaceDigitWordsReversed(line).match(/.*(\d)[^\d]*/)[1];
-    const toAdd = 10 * parseInt(first) + parseInt(last);
+    const toAdd = parseInt(first.concat(last));
     sum += toAdd;
   }
   console.log(sum)

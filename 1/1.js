@@ -7,7 +7,7 @@ const fs = require('fs').promises;
   for (const line of lines) {
     const first = line.match(/[^\d]*(\d).*/)[1];
     const last = line.match(/.*(\d)[^\d]*/)[1];
-    sum += 10 * parseInt(first) + parseInt(last);
+    sum += parseInt(first.concat(last));
   }
   console.log(sum)
 })();
